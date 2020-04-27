@@ -103,6 +103,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
    void trackCountries(){
-    startActivity(new Intent(MainActivity.this,AffectedCountries.class));
+    startActivity(new Intent(MainActivity.this, AffectedCountriesActivity.class));
    }
 }

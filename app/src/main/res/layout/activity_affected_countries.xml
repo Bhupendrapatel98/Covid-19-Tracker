@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/color_white"
-    tools:context=".ui.AffectedCountries">
+    tools:context=".ui.AffectedCountriesActivity">
 
     <EditText
         android:layout_width="match_parent"
@@ -21,12 +21,12 @@
         android:drawableLeft="@drawable/search_black"/>
 
     <ListView
+        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="fill_parent"
         android:id="@+id/listView"
         android:layout_below="@+id/edtSearch"
         android:layout_margin="10dp"/>
-
     <com.leo.simplearcloader.SimpleArcLoader
         android:layout_width="60dp"
         android:layout_height="60dp"
