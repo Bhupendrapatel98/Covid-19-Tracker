@@ -27,15 +27,7 @@
         android:layout_height="match_parent"
         android:layout_below="@+id/edtSearch"
         android:layout_margin="10dp"/>
-    
 
-   <!-- <ListView
-        android:visibility="gone"
-        android:layout_width="match_parent"
-        android:layout_height="fill_parent"
-        android:id="@+id/listView"
-        android:layout_below="@+id/edtSearch"
-        android:layout_margin="10dp"/>-->
 
     <com.leo.simplearcloader.SimpleArcLoader
         android:layout_width="60dp"

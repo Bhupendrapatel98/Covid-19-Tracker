@@ -1,9 +1,9 @@
 package com.example.covid_19tracker.Model;
 
-import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.SerializedName;
+import java.io.Serializable;
 
-public class CountryModel {
+public class CountryModel implements Serializable {
+
     private String country,cases,todayCases,deaths,todayDeaths,recovered,active,critical;
     private CountryInfo countryInfo;
 
@@ -93,7 +93,7 @@ public class CountryModel {
         this.countryInfo = countryInfo;
     }
 
-    public class CountryInfo {
+    public class CountryInfo implements Serializable{
 
         String flag;
 
