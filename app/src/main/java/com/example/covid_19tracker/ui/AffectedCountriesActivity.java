@@ -1,6 +1,8 @@
 package com.example.covid_19tracker.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -39,7 +41,7 @@ import retrofit2.Response;
 public class AffectedCountriesActivity extends AppCompatActivity {
 
     EditText edtSearch;
-    ListView listView;
+    RecyclerView recyclerview;
     SimpleArcLoader simpleArcLoader;
 
     @Override
@@ -48,23 +50,17 @@ public class AffectedCountriesActivity extends AppCompatActivity {
         setContentView(R.layout.activity_affected_countries);
 
         edtSearch = findViewById(R.id.edtSearch);
-        listView = findViewById(R.id.listView);
+        recyclerview = findViewById(R.id.recyclerview);
         simpleArcLoader = findViewById(R.id.loader);
+
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        recyclerview.setLayoutManager(layoutManager);
 
         getSupportActionBar().setTitle("Affected Countries");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         getData();
-
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                 Intent intent = new Intent(getApplicationContext(),CountryDetailActivity.class);
-                  intent.putExtra("position",position);
-                  startActivity(intent);
-            }
-        });
     }
 
     void getData(){
@@ -83,10 +79,10 @@ public class AffectedCountriesActivity extends AppCompatActivity {
 
                         simpleArcLoader.stop();
                         simpleArcLoader.setVisibility(View.GONE);
-                        listView.setVisibility(View.VISIBLE);
+                        recyclerview.setVisibility(View.VISIBLE);
 
                         CountryAdapter adapter = new CountryAdapter(AffectedCountriesActivity.this,response.body());
-                        listView.setAdapter(adapter);
+                        recyclerview.setAdapter(adapter);
                     }
 
                     @Override
