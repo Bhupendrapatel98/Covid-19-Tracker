@@ -2,6 +2,7 @@ package com.example.covid_19tracker.network;
 
 import com.example.covid_19tracker.Model.CountryModel;
 import com.example.covid_19tracker.Model.DataModel;
+import com.example.covid_19tracker.Model.DisttModel;
 import com.example.covid_19tracker.Model.StateModel;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
@@ -22,4 +23,7 @@ public interface GetRequest {
 
     @GET("data.json")
     Call<StateModel> getStateAffacted();
+
+    @GET("v2/state_district_wise.json")
+    Call<List<DisttModel>> getDistAffacted();
 }

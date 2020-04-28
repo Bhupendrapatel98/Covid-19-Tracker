@@ -6,6 +6,7 @@ public class CountryModel implements Serializable {
 
     private String country,cases,todayCases,deaths,todayDeaths,recovered,active,critical;
     private CountryInfo countryInfo;
+    private int id;
 
     @Override
     public String toString() {
@@ -19,6 +20,14 @@ public class CountryModel implements Serializable {
                 ", active='" + active + '\'' +
                 ", critical='" + critical + '\'' +
                 '}';
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getCountry() {

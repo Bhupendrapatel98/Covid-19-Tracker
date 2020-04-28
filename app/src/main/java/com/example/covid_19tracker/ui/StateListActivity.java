@@ -35,7 +35,6 @@ public class StateListActivity extends AppCompatActivity {
         state_recycler.setLayoutManager(layoutManager);
 
         getStates();
-
     }
 
     void getStates(){
@@ -60,4 +59,5 @@ public class StateListActivity extends AppCompatActivity {
                     }
                 });
     }
+
 }

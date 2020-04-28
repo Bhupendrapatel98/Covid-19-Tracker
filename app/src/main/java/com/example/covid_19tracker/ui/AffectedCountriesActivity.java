@@ -6,6 +6,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -43,11 +45,14 @@ public class AffectedCountriesActivity extends AppCompatActivity {
     EditText edtSearch;
     RecyclerView recyclerview;
     SimpleArcLoader simpleArcLoader;
+    CountryAdapter adapter;
+    List<CountryModel> temp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_affected_countries);
+
 
         edtSearch = findViewById(R.id.edtSearch);
         recyclerview = findViewById(R.id.recyclerview);
@@ -61,6 +66,40 @@ public class AffectedCountriesActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         getData();
+
+        edtSearch.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                //after the change calling the method and passing the search input
+                filter(editable.toString());
+            }
+        });
+    }
+
+    private void filter(String text) {
+
+
+
+        ArrayList<CountryModel> filterdNames = new ArrayList<>(); //new
+
+        for (CountryModel s : temp) {
+
+            if (s.getCountry().toLowerCase().contains(text.toLowerCase())) {
+
+                filterdNames.add(s);
+            }
+        }
+        adapter.filterList(filterdNames);
     }
 
     void getData(){
@@ -81,7 +120,16 @@ public class AffectedCountriesActivity extends AppCompatActivity {
                         simpleArcLoader.setVisibility(View.GONE);
                         recyclerview.setVisibility(View.VISIBLE);
 
-                        CountryAdapter adapter = new CountryAdapter(AffectedCountriesActivity.this,response.body());
+                        temp  = new ArrayList<>();
+
+                        for(int i = 0 ; i< response.body().size();i++){
+                            CountryModel model = response.body().get(i);
+                            model.setId(i);
+                            temp.add(model);
+                        }
+
+
+                        adapter = new CountryAdapter(AffectedCountriesActivity.this,response.body());
                         recyclerview.setAdapter(adapter);
                     }
 

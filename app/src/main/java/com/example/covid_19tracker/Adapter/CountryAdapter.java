@@ -55,7 +55,7 @@ public class CountryAdapter extends RecyclerView.Adapter<CountryAdapter.CountryV
             public void onClick(View view) {
                Intent intent = new Intent(context, CountryDetailActivity.class);
                //intent.putExtra("country",(ArrayList<CountryModel>)(countryModelsList));
-                intent.putExtra("position",pos);
+                intent.putExtra("position",countryModelsList.get(position).getId());
                 context.startActivity(intent);
             }
         });
@@ -78,5 +78,12 @@ public class CountryAdapter extends RecyclerView.Adapter<CountryAdapter.CountryV
             imageView = itemView.findViewById(R.id.imageFlag);
             main = itemView.findViewById(R.id.main);
         }
+    }
+
+    public void filterList(List<CountryModel> list){
+
+        countryModelsList =new ArrayList<>();
+        countryModelsList.addAll(list);
+        notifyDataSetChanged();
     }
 }

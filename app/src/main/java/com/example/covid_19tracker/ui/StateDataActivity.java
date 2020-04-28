@@ -24,6 +24,7 @@ import retrofit2.Response;
 public class StateDataActivity extends AppCompatActivity {
 
     private  int positionCountry;
+    private String code;
     TextView tvstate_data,tvstate_Cases,tvstateRecovered,tvstateCritical,tvstateActive,tvstateTodayCases,tvstateDeaths,tvstateTodayDeaths;
     SimpleArcLoader simpleArcLoader;
     CardView state_data;
@@ -35,7 +36,8 @@ public class StateDataActivity extends AppCompatActivity {
         setContentView(R.layout.activity_dist_list);
 
         Intent intent = getIntent();
-        positionCountry = intent.getIntExtra("position",0);
+
+        code = intent.getStringExtra("code");
 
         btnTrackdist = findViewById(R.id.btnTrackdist);
         state_data = findViewById(R.id.state_data);
@@ -50,13 +52,6 @@ public class StateDataActivity extends AppCompatActivity {
         tvstateTodayDeaths = findViewById(R.id.tvstateTodayDeaths);
 
         getStateData();
-
-        btnTrackdist.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(StateDataActivity.this, StateDataActivity.class));
-            }
-        });
     }
 
     void getStateData(){
@@ -72,6 +67,10 @@ public class StateDataActivity extends AppCompatActivity {
 
                         Log.i("mdsbjbksdjfksd", "onResponse: "+response);
                         Log.i("mdsbjbksdjfksd", "onResponse: "+response.body());
+
+
+
+
 
                         simpleArcLoader.stop();
                         simpleArcLoader.setVisibility(View.GONE);
@@ -92,7 +91,15 @@ public class StateDataActivity extends AppCompatActivity {
                         tvstateDeaths.setText(response.body().getStatewise().get(positionCountry).getDeaths());
                         tvstateTodayDeaths.setText(response.body().getStatewise().get(positionCountry).getDeltadeaths());
 
-
+                        btnTrackdist.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                Intent intent = new Intent(StateDataActivity.this, DisttListActivity.class);
+                                intent.putExtra("code",response.body().getStatewise().get(positionCountry).getStatecode());
+                                intent.putExtra("position",positionCountry);
+                                startActivity(intent);
+                            }
+                        });
                     }
 
                     @Override

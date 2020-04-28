@@ -12,63 +12,63 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.covid_19tracker.Model.DisttModel;
 import com.example.covid_19tracker.Model.StateModel;
 import com.example.covid_19tracker.R;
 import com.example.covid_19tracker.ui.StateDataActivity;
 
 import java.util.List;
 
-public class StateAdapter extends RecyclerView.Adapter<StateAdapter.StateViewHolder> {
+public class DisttAdapter extends RecyclerView.Adapter<DisttAdapter.DistViewHolder> {
 
     private Context context;
-    private List<StateModel.Statewise> stateModelsList;
+    private List<DisttModel.DistrictDatum> distModelsList;
 
-    public StateAdapter(Context context, List<StateModel.Statewise> stateModelsList) {
+    public DisttAdapter(Context context, List<DisttModel.DistrictDatum> distModelsList) {
         this.context = context;
-        this.stateModelsList = stateModelsList;
+        this.distModelsList = distModelsList;
     }
 
     @NonNull
     @Override
-    public StateViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public DistViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         View view =inflater.inflate(R.layout.state_list_item,parent,false);
-        return new StateViewHolder(view);
+        return new DistViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull StateViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull DistViewHolder holder, int position) {
 
 
-        holder.tvstateName.setText(stateModelsList.get(position).getState());
+        holder.tvstateName.setText(distModelsList.get(position).getDistrict());
 
         int pos = holder.getAdapterPosition();
         Log.i("djfsdkjfdkf", "onBindViewHolder: "+pos);
 
-        holder.state_main.setOnClickListener(new View.OnClickListener() {
+       /* holder.state_main.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                Intent intent = new Intent(context, StateDataActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                //intent.putExtra("country",(ArrayList<CountryModel>)(countryModelsList));
-
-                intent.putExtra("code",stateModelsList.get(position).getStatecode());
+                intent.putExtra("position",pos);
                 context.startActivity(intent);
             }
-        });
+        });*/
     }
 
     @Override
     public int getItemCount() {
-        return stateModelsList.size();
+        return distModelsList.size();
     }
 
-    public class StateViewHolder extends RecyclerView.ViewHolder {
+    public class DistViewHolder extends RecyclerView.ViewHolder {
 
         TextView tvstateName;
         CardView state_main;
 
-        public StateViewHolder(@NonNull View itemView) {
+        public DistViewHolder(@NonNull View itemView) {
             super(itemView);
             tvstateName = itemView.findViewById(R.id.tvstateName);
             state_main = itemView.findViewById(R.id.state_main);
