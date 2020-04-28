@@ -12,10 +12,12 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.covid_19tracker.Model.CountryModel;
 import com.example.covid_19tracker.Model.StateModel;
 import com.example.covid_19tracker.R;
 import com.example.covid_19tracker.ui.StateDataActivity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class StateAdapter extends RecyclerView.Adapter<StateAdapter.StateViewHolder> {
@@ -73,5 +75,12 @@ public class StateAdapter extends RecyclerView.Adapter<StateAdapter.StateViewHol
             tvstateName = itemView.findViewById(R.id.tvstateName);
             state_main = itemView.findViewById(R.id.state_main);
         }
+    }
+
+    public void filterList(List<StateModel.Statewise> list){
+
+        stateModelsList =new ArrayList<>();
+        stateModelsList.addAll(list);
+        notifyDataSetChanged();
     }
 }

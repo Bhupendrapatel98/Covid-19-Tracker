@@ -75,9 +75,6 @@ public class StateDataActivity extends AppCompatActivity {
                             }
                         }
 
-
-
-
                         simpleArcLoader.stop();
                         simpleArcLoader.setVisibility(View.GONE);
                         state_data.setVisibility(View.VISIBLE);

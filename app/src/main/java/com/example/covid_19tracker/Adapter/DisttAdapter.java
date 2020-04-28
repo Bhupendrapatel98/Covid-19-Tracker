@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.covid_19tracker.Model.DisttModel;
 import com.example.covid_19tracker.Model.StateModel;
 import com.example.covid_19tracker.R;
+import com.example.covid_19tracker.ui.DisttDetailActivity;
 import com.example.covid_19tracker.ui.StateDataActivity;
 
 import java.util.List;
@@ -23,10 +24,12 @@ public class DisttAdapter extends RecyclerView.Adapter<DisttAdapter.DistViewHold
 
     private Context context;
     private List<DisttModel.DistrictDatum> distModelsList;
+    private String code;
 
-    public DisttAdapter(Context context, List<DisttModel.DistrictDatum> distModelsList) {
+    public DisttAdapter(Context context, List<DisttModel.DistrictDatum> distModelsList,String code) {
         this.context = context;
         this.distModelsList = distModelsList;
+        this.code=code;
     }
 
     @NonNull
@@ -46,16 +49,17 @@ public class DisttAdapter extends RecyclerView.Adapter<DisttAdapter.DistViewHold
         int pos = holder.getAdapterPosition();
         Log.i("djfsdkjfdkf", "onBindViewHolder: "+pos);
 
-       /* holder.state_main.setOnClickListener(new View.OnClickListener() {
+       holder.state_main.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               Intent intent = new Intent(context, StateDataActivity.class);
+               Intent intent = new Intent(context, DisttDetailActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                //intent.putExtra("country",(ArrayList<CountryModel>)(countryModelsList));
                 intent.putExtra("position",pos);
+                intent.putExtra("code",code);
                 context.startActivity(intent);
             }
-        });*/
+        });
     }
 
     @Override

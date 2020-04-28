@@ -43,8 +43,7 @@ public class DisttListActivity extends AppCompatActivity {
         state  = intent.getStringExtra("state");
 
         code = intent.getStringExtra("code");
-
-        Log.i("sjdfbjsdd", "onCreate: "+state);
+        Log.i("sjdfbjsdd", "onCreate: "+code);
 
         getDistt();
     }
@@ -68,9 +67,9 @@ public class DisttListActivity extends AppCompatActivity {
                                 break;
                             }
                         }
+                        Log.i("sjdfbjsdd", "onResponse2: "+positionCountry);
 
-
-                            DisttAdapter disttAdapter = new DisttAdapter(DisttListActivity.this,response.body().get(positionCountry).getDistrictData());
+                            DisttAdapter disttAdapter = new DisttAdapter(DisttListActivity.this,response.body().get(positionCountry).getDistrictData(),code);
                             dist_recycler.setAdapter(disttAdapter);
 
                     }

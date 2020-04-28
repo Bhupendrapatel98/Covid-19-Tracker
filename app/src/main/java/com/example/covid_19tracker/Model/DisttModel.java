@@ -7,7 +7,16 @@ import java.util.List;
 
 public class DisttModel {
 
-        @SerializedName("state")
+    @Override
+    public String toString() {
+        return "DisttModel{" +
+                "state='" + state + '\'' +
+                ", statecode='" + statecode + '\'' +
+                ", districtData=" + districtData +
+                '}';
+    }
+
+    @SerializedName("state")
         @Expose
         private String state;
         @SerializedName("statecode")
@@ -43,6 +52,15 @@ public class DisttModel {
 
 
     public class Delta {
+
+        @Override
+        public String toString() {
+            return "Delta{" +
+                    "confirmed=" + confirmed +
+                    ", deceased=" + deceased +
+                    ", recovered=" + recovered +
+                    '}';
+        }
 
         @SerializedName("confirmed")
         @Expose

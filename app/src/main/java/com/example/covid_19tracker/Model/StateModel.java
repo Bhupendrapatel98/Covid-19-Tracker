@@ -7,6 +7,8 @@ import java.util.List;
 
 public class StateModel {
 
+
+
         @SerializedName("cases_time_series")
         @Expose
         private List<CasesTimeSeries> casesTimeSeries = null;
@@ -29,6 +31,7 @@ public class StateModel {
         public void setStatewise(List<Statewise> statewise) {
             this.statewise = statewise;
         }
+
 
 
     public class CasesTimeSeries {
@@ -116,6 +119,17 @@ public class StateModel {
 
 
     public class Statewise {
+
+        private int id;
+
+        public int getId() {
+            return id;
+        }
+
+        public void setId(int id) {
+            this.id = id;
+        }
+
 
         @SerializedName("active")
         @Expose

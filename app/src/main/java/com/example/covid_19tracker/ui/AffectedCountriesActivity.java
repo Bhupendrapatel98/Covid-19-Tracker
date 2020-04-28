@@ -88,8 +88,6 @@ public class AffectedCountriesActivity extends AppCompatActivity {
 
     private void filter(String text) {
 
-
-
         ArrayList<CountryModel> filterdNames = new ArrayList<>(); //new
 
         for (CountryModel s : temp) {
