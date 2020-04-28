@@ -68,6 +68,12 @@ public class StateDataActivity extends AppCompatActivity {
                         Log.i("mdsbjbksdjfksd", "onResponse: "+response);
                         Log.i("mdsbjbksdjfksd", "onResponse: "+response.body());
 
+                        for(int i = 0 ; i < response.body().getStatewise().size() ; i++){
+                            if(response.body().getStatewise().get(i).getStatecode().equals(code)){
+                                positionCountry = i;
+                                break;
+                            }
+                        }
 
 
 

@@ -49,6 +49,8 @@ public class StateListActivity extends AppCompatActivity {
                         Log.i("mdsbjbksdjfksd", "onResponse: "+response);
                         Log.i("mdsbjbksdjfksd", "onResponse: "+response.body());
 
+                        response.body().getStatewise().remove(0);
+
                         StateAdapter adapter = new StateAdapter(getApplicationContext(),response.body().getStatewise());
                         state_recycler.setAdapter(adapter);
                     }
