@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    >
+
+    <!--<LinearLayout
+        android:id="@+id/state_main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:orientation="horizontal">
+    </LinearLayout>-->
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/state_main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="10dp">
+
+        <TextView
+            android:gravity="center"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvstateName"
+            android:layout_gravity="center_vertical"
+            android:text="State Name"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:paddingLeft="15dp"/>
+
+    </androidx.cardview.widget.CardView>
+
+
+
+   <!-- <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/color_two"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        />-->
+
+</LinearLayout>
