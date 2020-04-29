@@ -50,4 +50,7 @@ dependencies {
 
     //,material
     implementation 'com.google.android.material:material:1.2.0-alpha06'
+
+    //gif
+    implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.17'
 }

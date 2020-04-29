@@ -2,8 +2,10 @@ package com.example.covid_19tracker.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -50,8 +52,6 @@ public class MainActivity extends AppCompatActivity {
         scrollView = findViewById(R.id.scrollStats);
         pieChart = findViewById(R.id.piechart);
         btnTrack = findViewById(R.id.btnTrack);
-
-        getAllDAta();
 
         btnTrack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -105,4 +105,10 @@ public class MainActivity extends AppCompatActivity {
    void trackCountries(){
     startActivity(new Intent(MainActivity.this, AffectedCountriesActivity.class));
    }
+
+    private boolean isNetworkConnected() {
+        ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        return cm.getActiveNetworkInfo() != null && cm.getActiveNetworkInfo().isConnected();
+    }
 }

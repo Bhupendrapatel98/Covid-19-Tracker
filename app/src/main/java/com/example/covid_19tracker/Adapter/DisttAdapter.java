@@ -18,6 +18,7 @@ import com.example.covid_19tracker.R;
 import com.example.covid_19tracker.ui.DisttDetailActivity;
 import com.example.covid_19tracker.ui.StateDataActivity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class DisttAdapter extends RecyclerView.Adapter<DisttAdapter.DistViewHolder> {
@@ -77,5 +78,12 @@ public class DisttAdapter extends RecyclerView.Adapter<DisttAdapter.DistViewHold
             tvstateName = itemView.findViewById(R.id.tvstateName);
             state_main = itemView.findViewById(R.id.state_main);
         }
+    }
+
+    public void filterList(List<DisttModel.DistrictDatum> list){
+
+        distModelsList =new ArrayList<>();
+        distModelsList.addAll(list);
+        notifyDataSetChanged();
     }
 }

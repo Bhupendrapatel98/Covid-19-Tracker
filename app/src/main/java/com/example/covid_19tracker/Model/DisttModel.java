@@ -16,6 +16,8 @@ public class DisttModel {
                 '}';
     }
 
+
+
     @SerializedName("state")
         @Expose
         private String state;
@@ -110,6 +112,16 @@ public class DisttModel {
                     ", recovered=" + recovered +
                     ", delta=" + delta +
                     '}';
+        }
+
+        private int id;
+
+        public int getId() {
+            return id;
+        }
+
+        public void setId(int id) {
+            this.id = id;
         }
 
         @SerializedName("district")
