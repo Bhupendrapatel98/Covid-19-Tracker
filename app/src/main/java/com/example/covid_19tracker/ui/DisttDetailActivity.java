@@ -83,6 +83,12 @@ public class DisttDetailActivity extends AppCompatActivity {
                                 break;
                             }
                         }
+
+                        String title = response.body().get(positionCountry).getDistrictData().get(position).getDistrict();
+                        getSupportActionBar().setTitle("Details of "+title);
+                        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+                        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
                         Log.i("kdjkjfkd", "onResponse2: "+positionCountry);
 
                         Log.i("jdfndkjdfk", "onResponse: "+response.body().get(positionCountry).getDistrictData().get(position).getDistrict());

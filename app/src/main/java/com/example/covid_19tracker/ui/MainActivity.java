@@ -2,23 +2,38 @@ package com.example.covid_19tracker.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.app.admin.NetworkEvent;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.baoyz.widget.PullRefreshLayout;
 import com.example.covid_19tracker.Model.DataModel;
 import com.example.covid_19tracker.R;
+
 import com.example.covid_19tracker.network.Constant;
 import com.example.covid_19tracker.network.GetRequest;
 import com.example.covid_19tracker.network.RetrofitClint;
+import com.google.android.material.snackbar.Snackbar;
 import com.leo.simplearcloader.SimpleArcLoader;
+import com.orhanobut.dialogplus.DialogPlus;
+import com.orhanobut.dialogplus.DialogPlusBuilder;
+import com.orhanobut.dialogplus.ViewHolder;
 
 import org.eazegraph.lib.charts.PieChart;
 import org.eazegraph.lib.models.PieModel;
@@ -27,18 +42,27 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static android.view.Gravity.CENTER;
+
 public class MainActivity extends AppCompatActivity {
 
     TextView tvCases,tvRecovered,tvCritical,tvActive,tvTodayCases,tvTotalDeaths,tvTodayDeaths,tvAffectedCountries;
     SimpleArcLoader simpleArcLoader;
     ScrollView scrollView;
     PieChart pieChart;
-    Button btnTrack;
+    Button btnTrack,refresh;
+    LinearLayout nointernet;
+    RelativeLayout internet;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        refresh = findViewById(R.id.refresh);
+        nointernet = findViewById(R.id.nointernet);
+        internet = findViewById(R.id.internet);
 
         tvCases = findViewById(R.id.tvCases);
         tvRecovered = findViewById(R.id.tvRecovered);
@@ -52,6 +76,29 @@ public class MainActivity extends AppCompatActivity {
         scrollView = findViewById(R.id.scrollStats);
         pieChart = findViewById(R.id.piechart);
         btnTrack = findViewById(R.id.btnTrack);
+
+                if (isNetworkConnected()){
+                    internet.setVisibility(View.VISIBLE);
+                    getAllDAta();
+                }
+                else {
+                    nointernet.setVisibility(View.VISIBLE);
+                    
+                    refresh.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+
+                            if (isNetworkConnected()){
+                                nointernet.setVisibility(View.GONE);
+                                internet.setVisibility(View.VISIBLE);
+                                getAllDAta();
+                            }
+                            else {
+                                Toast.makeText(MainActivity.this, "please turn on your internet connection", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    });
+                }
 
         btnTrack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -100,6 +147,7 @@ public class MainActivity extends AppCompatActivity {
 
                     }
                 });
+
     }
 
    void trackCountries(){
@@ -111,4 +159,5 @@ public class MainActivity extends AppCompatActivity {
 
         return cm.getActiveNetworkInfo() != null && cm.getActiveNetworkInfo().isConnected();
     }
+
 }

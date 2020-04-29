@@ -53,4 +53,10 @@ dependencies {
 
     //gif
     implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.17'
+
+    //dialogplus
+    implementation 'com.orhanobut:dialogplus:1.11@aar'
+
+    //pulldown to refresh
+    implementation 'com.baoyz.pullrefreshlayout:library:1.2.0'
 }

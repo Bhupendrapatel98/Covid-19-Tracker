@@ -33,8 +33,6 @@ public class DisttListActivity extends AppCompatActivity {
     RecyclerView dist_recycler;
     String state;
     DisttAdapter disttAdapter;
-    EditText edtSearch;
-    List<DisttModel.DistrictDatum> temp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,8 +40,6 @@ public class DisttListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_distt_list);
 
         dist_recycler = findViewById(R.id.dist_recycler);
-        edtSearch = findViewById(R.id.edtSearch);
-
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         dist_recycler.setLayoutManager(layoutManager);
 
@@ -55,39 +51,8 @@ public class DisttListActivity extends AppCompatActivity {
 
         getDistt();
 
-       /* edtSearch.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-                //after the change calling the method and passing the search input
-                filter(editable.toString());
-            }
-        });*/
     }
 
-    /*private void filter(String text){
-
-        ArrayList<DisttModel.DistrictDatum> filterdNames = new ArrayList<>(); //new
-
-        for (DisttModel.DistrictDatum s : temp) {
-
-            if (s.getDistrict().toLowerCase().contains(text.toLowerCase())) {
-
-                filterdNames.add(s);
-            }
-        }
-        disttAdapter.filterList(filterdNames);
-    }
-*/
     void getDistt(){
 
         RetrofitClint.getStateRetrofit(Constant.STATES_URL)
@@ -107,12 +72,6 @@ public class DisttListActivity extends AppCompatActivity {
                             }
                         }
 
-                       /* temp  = new ArrayList<>();
-                        for(int j = 0 ; j< response.body().get(positionCountry).getDistrictData().size();j++){
-                            DisttModel.DistrictDatum model = response.body().get(positionCountry).getDistrictData().get(j);
-                            model.setId(j);
-                            temp.add(model);
-                        }*/
 
                              disttAdapter = new DisttAdapter(DisttListActivity.this,response.body().get(positionCountry).getDistrictData(),code);
                             dist_recycler.setAdapter(disttAdapter);
