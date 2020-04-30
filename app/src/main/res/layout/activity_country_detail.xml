@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/color_white"
-    tools:context=".ui.CountryDetailActivity">
+    tools:context="covid.tracker.covid_19tracker.ui.CountryDetailActivity">
 
     <com.leo.simplearcloader.SimpleArcLoader
         android:layout_width="60dp"

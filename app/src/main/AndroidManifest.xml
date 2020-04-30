@@ -13,8 +13,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.DisttDetailActivity"></activity>
-        <activity android:name=".ui.SplashActivity"
+        <activity android:name="covid.tracker.covid_19tracker.ui.DisttDetailActivity"></activity>
+        <activity android:name="covid.tracker.covid_19tracker.ui.SplashActivity"
             android:theme="@style/Style">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,12 +22,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.DisttListActivity" />
-        <activity android:name=".ui.StateDataActivity" />
-        <activity android:name=".ui.StateListActivity" />
-        <activity android:name=".ui.CountryDetailActivity" />
-        <activity android:name=".ui.AffectedCountriesActivity" />
-        <activity android:name=".ui.MainActivity">
+        <activity android:name="covid.tracker.covid_19tracker.ui.DisttListActivity" />
+        <activity android:name="covid.tracker.covid_19tracker.ui.StateDataActivity" />
+        <activity android:name="covid.tracker.covid_19tracker.ui.StateListActivity" />
+        <activity android:name="covid.tracker.covid_19tracker.ui.CountryDetailActivity" />
+        <activity android:name="covid.tracker.covid_19tracker.ui.AffectedCountriesActivity" />
+        <activity android:name="covid.tracker.covid_19tracker.ui.MainActivity">
 
         </activity>
 

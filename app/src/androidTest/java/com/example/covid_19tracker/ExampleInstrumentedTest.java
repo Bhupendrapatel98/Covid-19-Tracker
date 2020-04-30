@@ -22,6 +22,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
 
-        assertEquals("com.example.covid_19tracker", appContext.getPackageName());
+        assertEquals("com.tracker.covid_19tracker", appContext.getPackageName());
     }
 }

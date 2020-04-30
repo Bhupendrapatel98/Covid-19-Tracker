@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/color_white"
-    tools:context=".ui.AffectedCountriesActivity">
+    tools:context="covid.tracker.covid_19tracker.ui.AffectedCountriesActivity">
 
     <EditText
         android:layout_width="match_parent"

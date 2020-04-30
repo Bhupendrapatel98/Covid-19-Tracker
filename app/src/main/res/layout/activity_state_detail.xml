@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.StateListActivity"
+    tools:context="covid.tracker.covid_19tracker.ui.StateListActivity"
     android:background="@color/color_white">
 
     <EditText
@@ -21,6 +21,7 @@
         android:drawableLeft="@drawable/search_black"/>
 
     <androidx.recyclerview.widget.RecyclerView
+        android:visibility="gone"
         android:layout_below="@id/edtSearch"
         android:id="@+id/state_recycler"
         android:layout_width="match_parent"
@@ -30,5 +31,13 @@
         android:layout_marginTop="5dp">
 
     </androidx.recyclerview.widget.RecyclerView>
+
+    <com.leo.simplearcloader.SimpleArcLoader
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:id="@+id/loader"
+        app:arc_style="simple_arc"
+        android:visibility="visible"
+        android:layout_centerInParent="true"/>
 
 </RelativeLayout>

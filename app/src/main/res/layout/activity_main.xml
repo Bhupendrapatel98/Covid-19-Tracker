@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/color_white"
     android:orientation="vertical"
-    tools:context=".ui.MainActivity">
+    tools:context="covid.tracker.covid_19tracker.ui.MainActivity">
 
     <LinearLayout
         android:id="@+id/nointernet"

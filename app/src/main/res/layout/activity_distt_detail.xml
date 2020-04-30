@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/color_white"
-    tools:context=".ui.DisttDetailActivity">
+    tools:context="covid.tracker.covid_19tracker.ui.DisttDetailActivity">
 
     <com.leo.simplearcloader.SimpleArcLoader
         android:layout_width="60dp"

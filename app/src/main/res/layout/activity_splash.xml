@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimary"
-    tools:context=".ui.SplashActivity">
+    tools:context="covid.tracker.covid_19tracker.ui.SplashActivity">
 
     <pl.droidsonroids.gif.GifImageView
         android:layout_width="match_parent"
